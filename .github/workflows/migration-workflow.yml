@@ -33,6 +33,7 @@ jobs:
           client_id: ${{ secrets.CLIENT_ID }}
           client_key: ${{ secrets.CLIENT_KEY }}
           realm: ${{ secrets.REALM }}
+          command_stk: "use workspace validate-stk"
           command_stk: |
             run action pid/innovation@1.0.0/dotnet-migrator \
               --dotnet_version ${{ github.event.inputs.dotnetVersion }} \
