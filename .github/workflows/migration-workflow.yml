@@ -9,6 +9,9 @@ on:
       gitUrl:
         description: 'Git Repository URL'
         required: true
+      pat:
+        description: 'Git Personal Access Token'
+        required: true        
       branch:
         description: 'Git Branch'
         required: true
@@ -23,10 +26,6 @@ jobs:
       - name: Run Migration Script
         run: |
           echo "Starting migration..."
-          echo "Dotnet Version: ${{ github.event.inputs.dotnetVersion }}"
-          echo "Git URL: ${{ github.event.inputs.gitUrl }}"
-          echo "Branch: ${{ github.event.inputs.branch }}"
-          # Adicione aqui os comandos para executar a migração
 
       - name: Run Action Stackspot
         uses: stack-spot/cli-github-action-run-command@v1.0.0
@@ -34,4 +33,9 @@ jobs:
           client_id: ${{ secrets.CLIENT_ID }}
           client_key: ${{ secrets.CLIENT_KEY }}
           realm: ${{ secrets.REALM }}
-          command_stk: "--version"
+          command_stk: |
+            run action pid/innovation@1.0.0/dotnet-migrator \
+              --dotnet_version ${{ github.event.inputs.dotnetVersion }} \
+              --git_url ${{ github.event.inputs.gitUrl }} \
+              --git_token ${{ github.event.inputs.pat }} \
+              --git_branch ${{ github.event.inputs.branch }}
