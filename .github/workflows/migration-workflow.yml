@@ -23,6 +23,11 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
+      - name: Configure Git User
+        run: |
+          git config --global user.name ".NET Project Migration Tool"
+          git config --global user.email "stackspot@stackspot.com"        
+
       - name: Run Migration Script
         run: |
           echo "Starting migration..."
