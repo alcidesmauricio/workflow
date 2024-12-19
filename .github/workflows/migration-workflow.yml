@@ -1,0 +1,29 @@
+name: Migration Workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      dotnetVersion:
+        description: '.NET Version'
+        required: true
+      gitUrl:
+        description: 'Git Repository URL'
+        required: true
+      branch:
+        description: 'Git Branch'
+        required: true
+
+jobs:
+  migration:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Run Migration Script
+        run: |
+          echo "Starting migration..."
+          echo "Dotnet Version: ${{ github.event.inputs.dotnetVersion }}"
+          echo "Git URL: ${{ github.event.inputs.gitUrl }}"
+          echo "Branch: ${{ github.event.inputs.branch }}"
+          # Adicione aqui os comandos para executar a migração
