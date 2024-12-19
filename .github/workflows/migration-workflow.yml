@@ -23,22 +23,9 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Configure Git User
-        run: |
-          git config --global user.name ".NET Project Migration Tool"
-          git config --global user.email "stackspot@stackspot.com"
-          
       - name: Run Migration Script
         run: |
           echo "Starting migration..."
-
-      - name: Run Use Workspace Stackspot
-        uses: stack-spot/cli-github-action-run-command@v1.0.0
-        with:
-          client_id: ${{ secrets.CLIENT_ID }}
-          client_key: ${{ secrets.CLIENT_KEY }}
-          realm: ${{ secrets.REALM }}
-          command_stk: "use workspace validate-stk"
               
       - name: Run Action Stackspot
         uses: stack-spot/cli-github-action-run-command@v1.0.0
@@ -47,7 +34,7 @@ jobs:
           client_key: ${{ secrets.CLIENT_KEY }}
           realm: ${{ secrets.REALM }}
           command_stk: |
-            run action pid/innovation@1.0.0/dotnet-migrator \
+            run action pid/dotnet-migrator \
               --dotnet_version ${{ github.event.inputs.dotnetVersion }} \
               --git_url ${{ github.event.inputs.gitUrl }} \
               --git_token ${{ github.event.inputs.pat }} \
