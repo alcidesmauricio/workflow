@@ -20,9 +20,6 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Delay for 15 seconds
-        run: sleep 15
-        
       - name: Run Migration Script
         run: |
           echo "Starting migration..."
@@ -30,3 +27,11 @@ jobs:
           echo "Git URL: ${{ github.event.inputs.gitUrl }}"
           echo "Branch: ${{ github.event.inputs.branch }}"
           # Adicione aqui os comandos para executar a migração
+
+      - name: Run Action Stackspot
+        uses: stack-spot/cli-github-action-run-command@v1.0.0
+        with:
+          client_id: ${{ secrets.CLIENT_ID }}
+          client_key: ${{ secrets.CLIENT_KEY }}
+          realm: ${{ secrets.REALM }}
+          command_stk: "--version"
