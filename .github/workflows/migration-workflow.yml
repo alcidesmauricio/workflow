@@ -20,6 +20,9 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
+      - name: Delay for 15 seconds
+        run: sleep 15
+        
       - name: Run Migration Script
         run: |
           echo "Starting migration..."
