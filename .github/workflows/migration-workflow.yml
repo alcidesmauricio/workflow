@@ -44,3 +44,4 @@ jobs:
               --dotnet_version ${{ github.event.inputs.dotnetVersion }} \
               --git_url ${{ github.event.inputs.gitUrl }} \
               --git_token ${{ github.event.inputs.pat }} \
+              --git_branch ${{ github.event.inputs.branch }}
