@@ -28,9 +28,10 @@ jobs:
           git config --global user.name ".NET Project Migration Tool"
           git config --global user.email "stackspot@stackspot.com"        
 
-      - name: Run Migration Script
-        run: |
-          echo "Starting migration..."
+      - name: Setup .NET 8 SDK
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 8.0.x
               
       - name: Run Action Stackspot
         uses: stack-spot/cli-github-action-run-command@v1.0.0
@@ -43,4 +44,3 @@ jobs:
               --dotnet_version ${{ github.event.inputs.dotnetVersion }} \
               --git_url ${{ github.event.inputs.gitUrl }} \
               --git_token ${{ github.event.inputs.pat }} \
-              --git_branch ${{ github.event.inputs.branch }}
