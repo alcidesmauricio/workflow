@@ -1,0 +1,36 @@
+name: Run dotnet 8 Migration
+description: Use this template to trigger the Migration Workflow.
+title: Run dotnet 8 Migration
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Preencha os campos abaixo para disparar o workflow de migração.
+  - type: input
+    id: dotnet_version
+    attributes:
+      label: .NET Version
+      description: Versão do .NET a ser usada.
+      placeholder: 8.0
+      required: true
+  - type: input
+    id: git_url
+    attributes:
+      label: Git Repository URL
+      description: URL do repositório Git.
+      placeholder: https://github.com/your-repo/your-project.git
+      required: true
+  - type: input
+    id: pat
+    attributes:
+      label: Git Personal Access Token
+      description: Token de acesso pessoal para o repositório.
+      placeholder: your-personal-access-token
+      required: true
+  - type: input
+    id: branch
+    attributes:
+      label: Git Branch
+      description: Branch do repositório Git.
+      placeholder: main
+      required: true
