@@ -1,6 +1,9 @@
 name: Run .NET Project Migration Tool
 description: Use este modelo para acionar o processo de migração do seu projeto .NET com nossa ferramenta automatizada.
 title: Run .NET Project Migration Tool
+labels:
+  - stackspot
+  - migration-net-tool
 body:
   - type: markdown
     attributes:
