@@ -6,15 +6,11 @@ body:
     attributes:
       value: |
         Preencha os campos abaixo para disparar o workflow de migração.
-  - type: input
-    id: dotnet_version
+  - type: markdown
     attributes:
-      label: .NET Version
-      description: Versão do .NET a ser usada.
-      type: select
-      items:
-        - net8
-      default: net8
+      value: |
+        **.NET Version:** `net8`  
+        *(Este campo é fixo e não pode ser alterado.)*
   - type: input
     id: git_url
     attributes:
