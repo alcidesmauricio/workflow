@@ -11,26 +11,22 @@ body:
     attributes:
       label: .NET Version
       description: Versão do .NET a ser usada.
-      placeholder: 8.0
-      required: true
+      placeholder: "8.0"
   - type: input
     id: git_url
     attributes:
       label: Git Repository URL
       description: URL do repositório Git.
-      placeholder: https://github.com/your-repo/your-project.git
-      required: true
+      placeholder: "https://github.com/your-repo/your-project.git"
   - type: input
     id: pat
     attributes:
       label: Git Personal Access Token
       description: Token de acesso pessoal para o repositório.
-      placeholder: your-personal-access-token
-      required: true
+      placeholder: "your-personal-access-token"
   - type: input
     id: branch
     attributes:
       label: Git Branch
       description: Branch do repositório Git.
-      placeholder: main
-      required: true
+      placeholder: "main"
