@@ -1,6 +1,6 @@
 name: Run .NET Project Migration Tool
 description: Use este modelo para acionar o processo de migração do seu projeto .NET com nossa ferramenta automatizada.
-title: Run dotnet 8 Migration
+title: Run .NET Project Migration Tool
 body:
   - type: markdown
     attributes:
@@ -13,12 +13,12 @@ body:
   - type: input
     id: git_url
     attributes:
-      label: Git Repository URL
+      label: Repositório
       description: URL do repositório Git.
       placeholder: "https://github.com/your-repo/your-project.git"
   - type: input
     id: branch
     attributes:
-      label: Git Branch
-      description: Branch do repositório Git.
+      label: Branch
+      description: Branch do repositório.
       placeholder: "main"
