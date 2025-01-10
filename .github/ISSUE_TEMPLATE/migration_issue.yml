@@ -1,5 +1,5 @@
-name: Run dotnet 8 Migration
-description: Use this template to trigger the Migration Workflow.
+name: Run .NET Project Migration Tool
+description: Use este modelo para acionar o processo de migração do seu projeto .NET com nossa ferramenta automatizada.
 title: Run dotnet 8 Migration
 body:
   - type: markdown
@@ -9,8 +9,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        **.NET Version:** `net8`  
-        *(Este campo é fixo e não pode ser alterado.)*
+        **.NET Version:** `net8` 
   - type: input
     id: git_url
     attributes:
