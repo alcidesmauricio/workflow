@@ -1,0 +1,56 @@
+name: Issue Trigger for Migration Workflow
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  trigger-migration:
+    if: github.event.issue.title == 'Run dotnet 8 Migration' # Verifica se o título da issue é exatamente igual a "Run dotnet 8 Migration"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Extract Inputs from Issue Body
+        id: extract
+        run: |
+          echo "Parsing issue body for inputs..."
+          echo "${{ github.event.issue.body }}" > issue_body.txt
+          DOTNET_VERSION=$(grep '^.NET Version:' issue_body.txt | cut -d':' -f2 | xargs)
+          GIT_URL=$(grep '^Git URL:' issue_body.txt | cut -d':' -f2 | xargs)
+          PAT=$(grep '^PAT:' issue_body.txt | cut -d':' -f2 | xargs)
+          BRANCH=$(grep '^Branch:' issue_body.txt | cut -d':' -f2 | xargs)
+          echo "::set-output name=dotnet_version::$DOTNET_VERSION"
+          echo "::set-output name=git_url::$GIT_URL"
+          echo "::set-output name=pat::$PAT"
+          echo "::set-output name=branch::$BRANCH"
+
+      - name: Trigger Migration Workflow
+        uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              workflow_id: 'migration-workflow.yml', # Nome do arquivo do workflow
+              ref: 'main', # Branch onde o workflow está configurado
+              inputs: {
+                dotnetVersion: "${{ steps.extract.outputs.dotnet_version }}",
+                gitUrl: "${{ steps.extract.outputs.git_url }}",
+                pat: "${{ steps.extract.outputs.pat }}",
+                branch: "${{ steps.extract.outputs.branch }}"
+              }
+            })
+
+  close-issue:
+    needs: trigger-migration # Aguarda o job anterior ser concluído
+    runs-on: ubuntu-latest
+    steps:
+      - name: Close the Issue
+        uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.issues.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              state: 'closed'
+            })
