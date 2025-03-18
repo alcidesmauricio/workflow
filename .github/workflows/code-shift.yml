@@ -22,6 +22,6 @@ jobs:
           client_key: ${{ secrets.CLIENT_KEY }}
           realm: ${{ secrets.REALM }}
           command_stk: |
-            run action modernization/test@0.0.5
+            run action modernization/test@0.0.6
 
             
