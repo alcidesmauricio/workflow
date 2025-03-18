@@ -22,7 +22,7 @@ jobs:
           client_key: ${{ secrets.CLIENT_KEY }}
           realm: ${{ secrets.REALM }}
           command_stk: |
-            run action modernization/scan-java@0.0.1 
+            run action modernization/scan-java@0.0.1 \
               --directory "./files-to-analyse-test" \
               --variables "CNPJ, digitodocto, numerodocumento, digitodocumento, nrodocto, numerodocto, numdocto, numdocumento, nrodocumento, filialdocto, filialdocumento, CGC" \
               --change_recommendation true \
