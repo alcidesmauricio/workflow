@@ -13,6 +13,14 @@ jobs:
           # Garante que todos os arquivos, incluindo o diretório `files-to-analyse-test`, sejam baixados
           fetch-depth: 0
 
+      - name: List All Files in Repository
+        run: |
+          echo "Listando todos os arquivos no repositório:"
+          ls -laR
+          echo "Verificando o diretório files-to-analyse-test:"
+          ls -laR ./files-to-analyse-test || echo "Diretório não encontrado!"
+
+
       - name: Configure Git User
         run: |
           git config --global user.name "Code Shift Test"
