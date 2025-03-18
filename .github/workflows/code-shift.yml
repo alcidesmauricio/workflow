@@ -33,4 +33,5 @@ jobs:
           client_key: ${{ secrets.CLIENT_KEY }}
           realm: ${{ secrets.REALM }}
           command_stk: |
-            run action modernization/test
+            run action modernization/test \
+            --directory "./files-to-analyse-test/Cliente.java"
