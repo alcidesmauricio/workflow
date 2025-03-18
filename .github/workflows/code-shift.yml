@@ -9,6 +9,9 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
+        with:
+          # Garante que todos os arquivos, incluindo o diretório `files-to-analyse-test`, sejam baixados
+          fetch-depth: 0
 
       - name: Configure Git User
         run: |
@@ -23,5 +26,3 @@ jobs:
           realm: ${{ secrets.REALM }}
           command_stk: |
             run action modernization/test
-
-            
