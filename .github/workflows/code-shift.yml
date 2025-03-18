@@ -1,0 +1,25 @@
+name: Code Shift Workflow
+
+on:
+  workflow_dispatch:
+
+jobs:
+  migration:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Configure Git User
+        run: |
+          git config --global user.name "Code Shift Test"
+          git config --global user.email "stackspot@stackspot.com"
+
+      - name: Run Action Stackspot
+        uses: stack-spot/cli-github-action-run-command@v1.0.0
+        with:
+          client_id: ${{ secrets.CLIENT_ID }}
+          client_key: ${{ secrets.CLIENT_KEY }}
+          realm: ${{ secrets.REALM }}
+          command_stk: |
+            run action modernization/test@0.0.1
