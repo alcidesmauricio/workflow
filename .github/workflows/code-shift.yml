@@ -25,8 +25,4 @@ jobs:
           client_key: ${{ secrets.CLIENT_KEY }}
           realm: ${{ secrets.REALM }}
           command_stk: |
-            run action modernization/scan-java \
-              --directory "./files-to-analyse-test" \
-              --variables "CNPJ, digitodocto, numerodocumento, digitodocumento, nrodocto, numerodocto, numdocto, numdocumento, nrodocumento, filialdocto, filialdocumento, CGC" \
-              --change_recommendation true \
-              --execute_slug "java-cnpj-analyse"
+            run action modernization/test
